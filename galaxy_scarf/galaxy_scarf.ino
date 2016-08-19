@@ -29,9 +29,10 @@ void loop() {
     // twinkle
     int pin = random(0,pin_count);
     int twinkle_count = random(2,5);
+    int brightness = random(5,30);
     for(int i=0; i<twinkle_count; i++) {
      
-      digitalWrite(led_pins[pin], HIGH);
+      analogWrite(led_pins[pin], brightness);
       delay(random(50,100));
       digitalWrite(led_pins[pin], LOW);
       delay(random(50,100));
