@@ -11,8 +11,6 @@ int old_x, old_y, old_z = 0;
 int new_x, new_y, new_z = 0;
 
 void setup() {
-  Serial.begin(9600); // for debugging only
-
   for(int i=0; i<pin_count; i++) {
     pinMode(led_pins[i], OUTPUT);
   }
@@ -22,15 +20,6 @@ void loop() {
   int new_x = analogRead(xpin);
   int new_y = analogRead(ypin);
   int new_z = analogRead(zpin);
-  
-  // -- for debugging only
-  Serial.print(new_x);
-  Serial.print("\t");
-  Serial.print(new_y);
-  Serial.print("\t");
-  Serial.print(new_z);
-  Serial.println();
-  // -- for debugging only
 
   // if there was enough movement
   if(abs(old_x - new_x) >= threshold || 
@@ -38,10 +27,14 @@ void loop() {
      abs(old_z - new_z) >= threshold){
 
     // twinkle
-    for(int i=0; i<pin_count; i++) {
-      digitalWrite(led_pins[i], HIGH);
-      delay(random(100,500));
-      digitalWrite(led_pins[i], LOW);
+    int pin = random(0,pin_count);
+    int twinkle_count = random(2,5);
+    for(int i=0; i<twinkle_count; i++) {
+     
+      digitalWrite(led_pins[pin], HIGH);
+      delay(random(50,100));
+      digitalWrite(led_pins[pin], LOW);
+      delay(random(50,100));
     }
   }
 
