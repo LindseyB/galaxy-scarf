@@ -1,6 +1,8 @@
 # galaxy-scarf
 A scarf of magic
 
+![](https://i.imgur.com/sf9Quf5.gif)
+
 ## Parts List
 
 * Arduino Lilypad Simple Board
